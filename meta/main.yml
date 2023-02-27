@@ -1,0 +1,20 @@
+galaxy_info:
+  author: thiagogomesverissimo
+  description: samba tasks
+  company: fflch
+  role_name: printer-server
+  
+  license: "license (BSD, MIT)"
+
+  min_ansible_version: 2.2
+
+  platforms:
+   - name: Debian
+     versions:
+     - bullseye
+  galaxy_tags:
+    - samba
+
+
+dependencies: []
+
