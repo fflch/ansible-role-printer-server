@@ -1,0 +1,24 @@
+[libdefaults]
+	default_realm = {{ printer_server_realm | upper }}
+	dns_lookup_realm = false
+	dns_lookup_kdc = true
+	kdc_timesync = 1
+	ccache_type = 4
+	forwardable = true
+	proxiable = true
+    fcc-mit-ticketflags = true
+
+    # https://access.redhat.com/discussions/3370851
+    rdns=false
+
+[realms]
+	{{ printer_server_realm |upper }} = {
+		kdc = {{ printer_server_samba_server|upper }}.{{ printer_server_realm|upper }}
+		admin_server = {{ printer_server_samba_server|upper }}.{{ printer_server_realm|upper }}
+	}
+
+[domain_realm]
+    .{{ printer_server_realm }} = {{ printer_server_realm | upper }}
+
+[logging]
+    default = SYSLOG

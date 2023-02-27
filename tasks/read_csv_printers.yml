@@ -1,0 +1,16 @@
+- name: creates printer_server_printers
+  set_fact: 
+    printer_server_printers: []
+
+- name: creates printers_from_csv
+  set_fact: 
+    printers_from_csv: "{{ printer_server_csv_printers.split('\n') }}"
+
+- name: monta lista de dicionários printer_server_printers
+  set_fact: 
+    printer_server_printers: > 
+      {{ printer_server_printers + [{ 
+        'name': item.split(',')[0]
+      }]}}
+  with_items: 
+    - "{{ printers_from_csv }}"

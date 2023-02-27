@@ -1,0 +1,12 @@
+---
+printer_server_realm: smbdomain.local.br
+printer_server_password: 123 
+printer_server_workgroup:  "{{ printer_server_realm.split('.')[0]|upper }}"
+printer_server_samba_server: firstdc
+printer_server_smb_extra: " "
+printer_server_use_backports: False
+printer_server_cups_server: '192.168.8.43:631'
+printer_server_csv_printers: "{{ lookup('file', '../../files/printers.csv') }}"
+printer_server_printers: []
+
+

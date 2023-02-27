@@ -1,0 +1,18 @@
+---
+- include: hostname.yml
+- include: spool.yml
+- include: read_csv_printers.yml
+
+- import_tasks: install.yml
+  when: not printer_server_use_backports
+
+- import_tasks: backports_install.yml
+  when: printer_server_use_backports
+
+- include: debian.yml
+- include: winbindd.yml
+- include: printers_drivers.yml
+- include: set_privilege.yml
+  
+
+

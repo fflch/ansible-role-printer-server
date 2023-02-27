@@ -1,0 +1,2 @@
+- name: Grant privilege SePrintOperatorPrivilege
+  command: net rpc rights grant "{{ printer_server_realm }}\Domain Admins" SePrintOperatorPrivilege -U Administrator%{{ printer_server_password }}
